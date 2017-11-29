@@ -10,7 +10,6 @@ import javax.swing.JTextArea;
 import com.gmail.daniel.r.heiniger.engine.Engine;
 import com.gmail.daniel.r.heiniger.pieces.GamePiece;
 import com.gmail.daniel.r.heiniger.pieces.LinePiece;
-import com.gmail.daniel.r.heiniger.pieces.SquarePiece;
 
 public class Canvas extends JFrame{
 	
