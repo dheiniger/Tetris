@@ -10,10 +10,14 @@ import javax.swing.JPanel;
 import com.gmail.daniel.r.heiniger.engine.Engine;
 
 public class Composite extends JPanel{
-	public static final int WIDTH = Engine.BOARD_WIDTH / 10;
-	public static final int HEIGHT = Engine.BOARD_HEIGHT / 20;
-	
 	private static final long serialVersionUID = 1L;
+	
+	private static final int MAX_NUMBER_OF_X_COMPOSITES = 10;
+	private static final int MAX_NUMBER_OF_Y_COMPOSITES = 20;
+	
+	public static final int WIDTH = Engine.BOARD_WIDTH / MAX_NUMBER_OF_X_COMPOSITES;
+	public static final int HEIGHT = Engine.BOARD_HEIGHT / MAX_NUMBER_OF_Y_COMPOSITES;
+	
 	private static final Color DEFAULT_BORDER_COLOR = Color.BLACK;
 	
 	private Color color;
@@ -37,6 +41,10 @@ public class Composite extends JPanel{
 		this.borderColor = borderColor;
 		this.position = position;
 	}
+	
+	public Position getPosition(){
+		return this.position;
+	}
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -47,13 +55,5 @@ public class Composite extends JPanel{
 		g2.draw(compositeSquare);
 		g2.setColor(this.color);
 		g2.fill(compositeSquare);
-	}
-	
-	private int calculateXCoordinate(){
-		return position.getX() * WIDTH;
-	}
-	
-	private int calculateYCoordinate(){
-		return position.getY() * HEIGHT;
 	}
 }

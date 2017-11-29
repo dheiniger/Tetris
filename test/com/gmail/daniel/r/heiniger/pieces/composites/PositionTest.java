@@ -6,6 +6,7 @@ import org.junit.Test;
 import com.gmail.daniel.r.heiniger.engine.Engine;
 
 public class PositionTest {
+	private static final int BUFFER_SPACE = 1;
 	
 	@Test
 	public void testCopy(){
@@ -16,7 +17,7 @@ public class PositionTest {
 	
 	@Test
 	public void testCenterX(){
-		assertEquals(Engine.BOARD_WIDTH/2, Position.getCenterX());
+		assertEquals(Engine.BOARD_WIDTH/2 - BUFFER_SPACE, Position.getCenterXCoordinate());
 	}
 	
 	@Test

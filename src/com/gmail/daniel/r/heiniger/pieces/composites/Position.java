@@ -10,7 +10,7 @@ import com.gmail.daniel.r.heiniger.engine.Engine;
  *
  */
 public class Position {
-	
+	private static int BUFFER_SPACE = 1;
 	private int x;
 	private int y;
 	
@@ -29,8 +29,12 @@ public class Position {
 		this.y = p.getY();
 	}
 	
-	public static int getCenterX(){
-		return Engine.BOARD_WIDTH/2;
+	public static int getCenterXCoordinate(){
+		return Engine.BOARD_WIDTH/2 - BUFFER_SPACE;
+	}
+	
+	public static int getDrawingCenterXCoordinate(){
+		return getCenterXCoordinate() - getShiftXAmount();
 	}
 	
 	public static Position getPositionRightOf(Position p){
@@ -50,30 +54,30 @@ public class Position {
 	}
 	
 	public static int getShiftXAmount(){
-		return Composite.WIDTH;
+		return Composite.WIDTH + BUFFER_SPACE;
 	}
 	
 	public static int getShiftYAmount(){
-		return Composite.HEIGHT;
+		return Composite.HEIGHT + BUFFER_SPACE;
 	}
 	
 	public Position shiftRight(){
-		this.x+= Composite.WIDTH;
+		this.x+= getShiftXAmount();
 		return this;
 	}
 	
 	public Position shiftLeft(){
-		this.x-= Composite.WIDTH;
+		this.x-= getShiftXAmount();
 		return this;
 	}
 	
 	public Position shiftDown(){
-		this.y+= Composite.HEIGHT;
+		this.y+= getShiftYAmount();
 		return this;
 	}
 	
 	public Position shiftUp(){
-		this.y-= Composite.HEIGHT;
+		this.y-= getShiftYAmount();
 		return this;
 	}
 	
@@ -83,5 +87,17 @@ public class Position {
 	
 	public int getY(){
 		return this.y;
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		Position comparedPosition = (Position)o;
+		return this.x == comparedPosition.getX()
+				&& this.y == comparedPosition.getY();
+	}
+	
+	@Override
+	public String toString(){
+		return "X: " + this.x + " Y: " + this.y;
 	}
 }
