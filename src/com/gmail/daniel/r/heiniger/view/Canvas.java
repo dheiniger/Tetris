@@ -14,6 +14,8 @@ import com.gmail.daniel.r.heiniger.pieces.SquarePiece;
 
 public class Canvas extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
+
 	public Canvas(){
 		initializeDefaultFrame();
 		buildInterface();
@@ -29,8 +31,8 @@ public class Canvas extends JFrame{
 	
 	private void buildInterface(){
 		JPanel squarePane = new JPanel();
-//		addPiece(new SquarePiece());
-		addPiece(new LinePiece());
+		addPiece(new SquarePiece());
+//		addPiece(new LinePiece());
 //		getContentPane().add(new JPanel(new Rectangle()));
 //		setLayout(new BorderLayout());
 //		add(buildScoreComponent(), BorderLayout.CENTER);

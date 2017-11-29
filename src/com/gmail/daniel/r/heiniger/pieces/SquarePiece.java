@@ -11,9 +11,10 @@ public class SquarePiece extends GamePiece{
 	
 	public SquarePiece(){
 		super();
-		this.pieceComposites[0] = new Composite(COLOR, new Position(Position.getCenterX(), 0));
-		this.pieceComposites[1] = new Composite(COLOR, new Position(Position.getCenterX(), 1));
-		this.pieceComposites[2] = new Composite(COLOR, new Position(Position.getCenterX() + 50, 0));
-		this.pieceComposites[3] = new Composite(COLOR, new Position(Position.getCenterX() + 50, 1));
+		Position startingPosition = new Position(Position.getDrawingCenterXCoordinate(), 0);
+		this.pieceComposites[0] = new Composite(COLOR, startingPosition);
+		this.pieceComposites[1] = new Composite(COLOR, Position.getPositionRightOf(startingPosition));
+		this.pieceComposites[2] = new Composite(COLOR, startingPosition = Position.getPositionBelow(startingPosition));
+		this.pieceComposites[3] = new Composite(COLOR, Position.getPositionRightOf(startingPosition));
 	}
 }
