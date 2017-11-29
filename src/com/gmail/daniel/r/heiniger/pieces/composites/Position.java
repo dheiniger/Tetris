@@ -1,5 +1,7 @@
 package com.gmail.daniel.r.heiniger.pieces.composites;
 
+import com.gmail.daniel.r.heiniger.engine.Engine;
+
 public class Position {
 	
 	private int x;
@@ -13,6 +15,10 @@ public class Position {
 	public Position(int x, int y){
 		this.x = x;
 		this.y = y;
+	}
+	
+	public static int getCenterX(){
+		return Engine.BOARD_WIDTH/2;
 	}
 	
 	public void shiftRight(){
