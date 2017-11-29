@@ -3,6 +3,8 @@ package com.gmail.daniel.r.heiniger.pieces.composites;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import com.gmail.daniel.r.heiniger.engine.Engine;
+
 public class PositionTest {
 	
 	@Test
@@ -10,6 +12,11 @@ public class PositionTest {
 		Position original = new Position();
 		Position copy = Position.getPositionRightOf(original);
 		assertNotEquals(original, copy);
+	}
+	
+	@Test
+	public void testCenterX(){
+		assertEquals(Engine.BOARD_WIDTH/2, Position.getCenterX());
 	}
 	
 	@Test
