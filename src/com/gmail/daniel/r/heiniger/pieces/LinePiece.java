@@ -21,16 +21,4 @@ public class LinePiece extends GamePiece{
 	private Position determinePosition(int index){
 		return new Position(determineDefaultXCoordinate(), determineYCoordinate(index));
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		for (Composite composite : pieceComposites) {
-			composite.paintComponent(g);
-		}
-	}
-	
-	
-	
 }
