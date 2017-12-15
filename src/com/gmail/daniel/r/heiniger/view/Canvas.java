@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import com.gmail.daniel.r.heiniger.engine.Engine;
+import com.gmail.daniel.r.heiniger.events.MovementListener;
 import com.gmail.daniel.r.heiniger.pieces.GamePiece;
 import com.gmail.daniel.r.heiniger.pieces.LinePiece;
-import com.gmail.daniel.r.heiniger.pieces.SquarePiece;
 
 public class Canvas extends JFrame{
 	
@@ -31,11 +31,17 @@ public class Canvas extends JFrame{
 	
 	private void buildInterface(){
 		JPanel squarePane = new JPanel();
-		addPiece(new SquarePiece());
-//		addPiece(new LinePiece());
+		GamePiece activePiece = new LinePiece();
+		setEventListeners(activePiece);
+//		addPiece(new SquarePiece());
+		addPiece(activePiece);
 //		getContentPane().add(new JPanel(new Rectangle()));
 //		setLayout(new BorderLayout());
 //		add(buildScoreComponent(), BorderLayout.CENTER);
+	}
+	
+	private void setEventListeners(GamePiece activePiece){
+		this.addKeyListener(new MovementListener(activePiece));
 	}
 	
 	private JComponent buildScoreComponent(){

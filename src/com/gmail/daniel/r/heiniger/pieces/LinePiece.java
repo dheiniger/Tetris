@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import com.gmail.daniel.r.heiniger.pieces.composites.Composite;
 import com.gmail.daniel.r.heiniger.pieces.composites.Position;
-import com.gmail.daniel.r.heiniger.pieces.composites.PositionTest;
 
 public class LinePiece extends GamePiece{
 	private static final long serialVersionUID = 1L;
@@ -14,8 +13,8 @@ public class LinePiece extends GamePiece{
 		super();		
 		Position startingPosition = new Position(Position.getDrawingCenterXCoordinate(), 0);
 		this.pieceComposites[0]   = new Composite(COLOR, startingPosition);
-		this.pieceComposites[1]   = new Composite(COLOR, startingPosition = Position.getPositionBelow(startingPosition));
-		this.pieceComposites[2]   = new Composite(COLOR, startingPosition = Position.getPositionBelow(startingPosition));
-		this.pieceComposites[3]   = new Composite(COLOR, startingPosition = Position.getPositionBelow(startingPosition));
+		this.pieceComposites[1]   = new Composite(COLOR, startingPosition = Position.getPositionRightOf(startingPosition));
+		this.pieceComposites[2]   = new Composite(COLOR, startingPosition = Position.getPositionRightOf(startingPosition));
+		this.pieceComposites[3]   = new Composite(COLOR, startingPosition = Position.getPositionRightOf(startingPosition));
 	}
 }

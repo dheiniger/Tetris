@@ -89,6 +89,11 @@ public class Position {
 		return this.y;
 	}
 	
+	public boolean isOccupied(){
+		//TODO
+		return false;
+	}
+	
 	@Override
 	public boolean equals(Object o){
 		Position comparedPosition = (Position)o;

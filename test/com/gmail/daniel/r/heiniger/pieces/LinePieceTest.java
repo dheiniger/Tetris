@@ -10,14 +10,11 @@ public class LinePieceTest {
 	@Test
 	public void testDefaultCompositePositions(){
 		GamePiece linePiece = new LinePiece();
-		int xCoordinate = Position.getCenterXCoordinate()-Position.getShiftXAmount();
+		int xCoordinate = Position.getDrawingCenterXCoordinate();
 		
 		assertEquals(new Position(xCoordinate, 0), linePiece.getComposites()[0].getPosition());
-		assertEquals(new Position(xCoordinate, Position.getShiftYAmount()), 
-				linePiece.getComposites()[1].getPosition());
-		assertEquals(new Position(xCoordinate, Position.getShiftYAmount() * 2), 
-				linePiece.getComposites()[2].getPosition());
-		assertEquals(new Position(xCoordinate, Position.getShiftYAmount() * 3), 
-				linePiece.getComposites()[3].getPosition());
+		assertEquals(new Position(xCoordinate + Position.getShiftXAmount(), 0), linePiece.getComposites()[1].getPosition());
+		assertEquals(new Position(xCoordinate + Position.getShiftXAmount() * 2, 0), linePiece.getComposites()[2].getPosition());
+		assertEquals(new Position(xCoordinate + Position.getShiftXAmount() * 3, 0), linePiece.getComposites()[3].getPosition());
 	}
 }
