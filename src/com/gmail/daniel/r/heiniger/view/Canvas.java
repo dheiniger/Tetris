@@ -11,6 +11,7 @@ import com.gmail.daniel.r.heiniger.engine.Engine;
 import com.gmail.daniel.r.heiniger.events.MovementListener;
 import com.gmail.daniel.r.heiniger.pieces.GamePiece;
 import com.gmail.daniel.r.heiniger.pieces.LinePiece;
+import com.gmail.daniel.r.heiniger.pieces.SquarePiece;
 
 public class Canvas extends JFrame{
 	
@@ -24,6 +25,7 @@ public class Canvas extends JFrame{
 	private void initializeDefaultFrame() {
 		setVisible(true);
 		setSize(Engine.BOARD_WIDTH, Engine.BOARD_HEIGHT);
+		setResizable(false);
 		setTitle("Tetris");
 		setBackground(Color.DARK_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +33,7 @@ public class Canvas extends JFrame{
 	
 	private void buildInterface(){
 		JPanel squarePane = new JPanel();
-		GamePiece activePiece = new LinePiece();
+		GamePiece activePiece = new SquarePiece();
 		setEventListeners(activePiece);
 //		addPiece(new SquarePiece());
 		addPiece(activePiece);
