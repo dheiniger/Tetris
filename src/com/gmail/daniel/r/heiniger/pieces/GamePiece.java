@@ -24,6 +24,30 @@ public abstract class GamePiece extends JPanel{
 		return NUMBER_OF_COMPOSITES;
 	}
 
+	public void shiftLeft(){
+		for (Composite composite : pieceComposites) {
+			composite.getPosition().shiftLeft();
+		}
+	}
+	
+	public void shiftRight(){
+		for (Composite composite : pieceComposites) {
+			composite.getPosition().shiftRight();
+		}
+	}
+	
+	public void shiftUp(){
+		for (Composite composite : pieceComposites) {
+			composite.getPosition().shiftUp();
+		}
+	}
+	
+	public void shiftDown(){
+		for (Composite composite : pieceComposites) {
+			composite.getPosition().shiftDown();
+		}
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
@@ -31,5 +55,5 @@ public abstract class GamePiece extends JPanel{
 		for (Composite composite : pieceComposites) {
 			composite.paintComponent(g);
 		}
-	}   
+	}	
 }
