@@ -4,14 +4,18 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import com.gmail.daniel.r.heiniger.engine.Engine;
 import com.gmail.daniel.r.heiniger.events.MovementListener;
-import com.gmail.daniel.r.heiniger.pieces.GamePiece;
-import com.gmail.daniel.r.heiniger.pieces.LinePiece;
-import com.gmail.daniel.r.heiniger.pieces.SquarePiece;
+import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoI;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoJ;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoL;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoO;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoS;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoT;
+import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoZ;
 
 public class Canvas extends JFrame{
 	
@@ -32,17 +36,21 @@ public class Canvas extends JFrame{
 	}
 	
 	private void buildInterface(){
-		JPanel squarePane = new JPanel();
-		GamePiece activePiece = new SquarePiece();
+		Tetromino activePiece = new TetrominoO();
+		
+		
+//		activePiece = new TetrominoI();
+//		activePiece = new TetrominoJ();
+//		activePiece = new TetrominoL();
+//		activePiece = new TetrominoO();
+//		activePiece = new TetrominoS();
+//		activePiece = new TetrominoT();
+		activePiece = new TetrominoZ();
 		setEventListeners(activePiece);
-//		addPiece(new SquarePiece());
 		addPiece(activePiece);
-//		getContentPane().add(new JPanel(new Rectangle()));
-//		setLayout(new BorderLayout());
-//		add(buildScoreComponent(), BorderLayout.CENTER);
 	}
 	
-	private void setEventListeners(GamePiece activePiece){
+	private void setEventListeners(Tetromino activePiece){
 		this.addKeyListener(new MovementListener(activePiece));
 	}
 	
@@ -50,7 +58,7 @@ public class Canvas extends JFrame{
 		return new JTextArea();
 	}
 	
-	public void addPiece(GamePiece gamePiece){
-		getContentPane().add(gamePiece);
+	public void addPiece(Tetromino tetromino){
+		getContentPane().add(tetromino);
 	}
 }

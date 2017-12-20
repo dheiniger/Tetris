@@ -3,14 +3,14 @@ package com.gmail.daniel.r.heiniger.events;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import com.gmail.daniel.r.heiniger.actions.KeyEventAction;
-import com.gmail.daniel.r.heiniger.pieces.GamePiece;
+import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
+import com.gmail.daniel.r.heiniger.tetrominoes.actions.KeyEventAction;
 
 public class MovementListener implements KeyListener{
 	
-	private GamePiece activePiece;	
+	private Tetromino activePiece;	
 
-	public MovementListener(GamePiece activePiece){
+	public MovementListener(Tetromino activePiece){
 		this.activePiece = activePiece;
 	}
 		

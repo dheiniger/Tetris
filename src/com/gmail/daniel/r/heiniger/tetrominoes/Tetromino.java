@@ -1,22 +1,22 @@
-package com.gmail.daniel.r.heiniger.pieces;
+package com.gmail.daniel.r.heiniger.tetrominoes;
 
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.gmail.daniel.r.heiniger.pieces.composites.Composite;
+import com.gmail.daniel.r.heiniger.tetrominoes.composites.Composite;
 
-public abstract class GamePiece extends JPanel{
+public abstract class Tetromino extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private static int NUMBER_OF_COMPOSITES = 4;
 	
 	protected Composite pieceComposites[];
 	
-	public GamePiece(){
+	public Tetromino(){
 		pieceComposites = new Composite[NUMBER_OF_COMPOSITES];
 	}
 	
-	protected Composite[] getComposites(){
+	public Composite[] getComposites(){
 		return this.pieceComposites;
 	}
 	
@@ -26,26 +26,36 @@ public abstract class GamePiece extends JPanel{
 
 	public void shiftLeft(){
 		for (Composite composite : pieceComposites) {
-			composite.getPosition().shiftLeft();
+			composite.getRelativePosition().shiftLeft();
 		}
 	}
 	
 	public void shiftRight(){
 		for (Composite composite : pieceComposites) {
-			composite.getPosition().shiftRight();
+			composite.getRelativePosition().shiftRight();
 		}
 	}
 	
 	public void shiftUp(){
 		for (Composite composite : pieceComposites) {
-			composite.getPosition().shiftUp();
+			composite.getRelativePosition().shiftUp();
 		}
 	}
 	
 	public void shiftDown(){
 		for (Composite composite : pieceComposites) {
-			composite.getPosition().shiftDown();
+			composite.getRelativePosition().shiftDown();
 		}
+	}
+	
+	public void rotateRight(){
+		for (Composite composite : pieceComposites) {
+			composite.getRelativePosition().rotateRight();
+		}
+	}
+	
+	public void rotateLeft(){
+	
 	}
 	
 	@Override

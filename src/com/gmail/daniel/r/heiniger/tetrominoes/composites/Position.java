@@ -1,9 +1,9 @@
-package com.gmail.daniel.r.heiniger.pieces.composites;
+package com.gmail.daniel.r.heiniger.tetrominoes.composites;
 
 import com.gmail.daniel.r.heiniger.engine.Engine;
 /**
- * A {@link PositionTest} represents the x and y coordinates of
- * 1 {@link Composite}. The {@code x - coordinate} of a {@link PositionTest} is equal
+ * A {@link Position} represents the x and y coordinates of
+ * 1 {@link Composite}. The {@code x - coordinate} of a {@link Position} is equal
  * to the {@code width} of one {@link Composite}.  Similarly, the {@code y - coordinate} 
  * is equal to the {@code height} of one {@link Composite}
  * @author Daniel
@@ -11,8 +11,9 @@ import com.gmail.daniel.r.heiniger.engine.Engine;
  */
 public class Position {
 	private static int BUFFER_SPACE = 1;
-	private int x;
-	private int y;
+	//TODO make private instead?
+	protected int x;
+	protected int y;
 	
 	public Position(){
 		this.x = 0;
@@ -24,9 +25,9 @@ public class Position {
 		this.y = y;
 	}
 	
-	private Position(Position p){
-		this.x = p.getX();
-		this.y = p.getY();
+	public Position(Position p){
+		this.x = p.x;
+		this.y = p.y;
 	}
 	
 	public static int getCenterXCoordinate(){
