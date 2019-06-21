@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
-import com.gmail.daniel.r.heiniger.engine.Engine;
+import com.gmail.daniel.r.heiniger.engine.EngineProperties;
 
 public class PositionTest {
 	private static final int BUFFER_SPACE = 1;
@@ -19,7 +19,7 @@ public class PositionTest {
 	
 	@Test
 	public void testCenterX(){
-		assertEquals(Engine.BOARD_WIDTH/2 - BUFFER_SPACE, Position.getCenterXCoordinate());
+		assertEquals(EngineProperties.BOARD_WIDTH/2 - BUFFER_SPACE, Position.getCenterXCoordinate());
 	}
 	
 	@Test
@@ -111,4 +111,17 @@ public class PositionTest {
 		assertEquals(original.getX() + Position.getShiftXAmount(), shiftedPosition.getX());
 		assertEquals(original.getX(), Position.getPositionLeftOf(shiftedPosition).getX());
 	}
+
+	@Test
+	public void whenXCoordinatesAreDifferent_PositionsAreNotEqual(){
+		assertNotEquals(new Position(1, 1),
+						new Position(2, 1));
+	}
+
+	@Test
+	public void whenYCoordinatesAreDifferent_PositionsAreNotEqual(){
+		assertNotEquals(new Position(1, 1),
+				new Position(1, 2));
+	}
+
 }

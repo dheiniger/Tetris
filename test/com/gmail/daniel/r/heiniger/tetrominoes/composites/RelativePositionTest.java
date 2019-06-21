@@ -1,47 +1,15 @@
 package com.gmail.daniel.r.heiniger.tetrominoes.composites;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
 import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
 import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoI;
 public class RelativePositionTest {
-	private static final Position POSITION_ZERO = new Position(0,0);
+	private static final Position POSITION_ZERO = DefaultPosition.POSITION_ZERO.getPosition();
 	private static final RelativePosition RELATIVE_POSITION_ZERO = new RelativePosition(0, POSITION_ZERO);
-	
-//	@Test
-//	public void testPositionZeroFromRelativePositionOne(){
-//		RelativePosition positionOne = new RelativePosition(0, new Position(0, 0));
-//		assertEquals(RELATIVE_POSITION_ZERO, RelativePosition.getRelativePositionZero(positionOne));
-//	}
-//	
-//	@Test
-//	public void testPositionZeroFromRelativePositionGreaterThanFour(){
-//		RelativePosition positionSeven = new RelativePosition(6, new Position(2*Position.getShiftXAmount(), 
-//																				Position.getShiftYAmount()));
-//		assertEquals(RELATIVE_POSITION_ZERO, RelativePosition.getRelativePositionZero(positionSeven));
-//	}
-//	
-//	@Test
-//	public void testPositionZeroFromRelativePositionGreaterThanSixteen(){
-//		RelativePosition positionSeventeen = new RelativePosition(17, new Position(Position.getShiftXAmount(), 
-//																			   4*Position.getShiftYAmount()));
-//		
-//		try{
-//			RelativePosition.getRelativePositionZero(positionSeventeen);
-//			fail("An indexOutOfBoundsException should have been thrown!");
-//		}catch (IndexOutOfBoundsException exception){
-//			assertTrue("Success, An exception was caught", true);
-//		}
-//	}
-//	
-//	@Test
-//	public void testPositionZeroFromRelativePositionZero(){
-//		RelativePosition zeroPosition = new RelativePosition(0, new Position(0,0));
-//		assertEquals(RELATIVE_POSITION_ZERO, RelativePosition.getRelativePositionZero(zeroPosition));
-//	}
-//	
 	
 	@Test
 	public void testRotateTetrominoIRight(){
@@ -51,7 +19,7 @@ public class RelativePositionTest {
 		assertEquals(7, getIndexFromComposite(tetrominoI.getComposites()[1]));
 		assertEquals(11, getIndexFromComposite(tetrominoI.getComposites()[2]));
 		assertEquals(15, getIndexFromComposite(tetrominoI.getComposites()[3]));
-		assertEquals(Position.getCenterXCoordinate() + (3 * Position.getShiftXAmount()), getXPositionFromComposite(tetrominoI.getComposites()[0]));
+		assertEquals(DefaultPosition.POSITION_THREE.getPosition().x, getXPositionFromComposite(tetrominoI.getComposites()[0]));
 	}
 	
 	@Test
@@ -79,22 +47,56 @@ public class RelativePositionTest {
 	
 	@Test
 	public void testGetAllRelativePositionsFromRelativePositionOne(){
-		assertEquals(RelativePosition.MAX_RELATIVE_POSITIONS,
-					 RelativePosition.getAllRelativePositions(RELATIVE_POSITION_ZERO).length);
-		assertEquals(RelativePosition.getRelativePositionBelow(RELATIVE_POSITION_ZERO),
-				 RelativePosition.getAllRelativePositions(RELATIVE_POSITION_ZERO)[4]);
+		RelativePosition relativePositionOne = new RelativePosition(1, DefaultPosition.POSITION_ONE.getPosition());
+		assertEquals(RelativePosition.MAX_RELATIVE_POSITIONS, RelativePosition.getAllRelativePositions(relativePositionOne).length);
+		assertEquals(RelativePosition.getRelativePositionBelow(RELATIVE_POSITION_ZERO), RelativePosition.getAllRelativePositions(relativePositionOne)[4]);
 	}
 	
 	@Test
-	public void testGetAllRelativePositionsFromRelativeGreaterThanFour(){
-		assertEquals(RelativePosition.MAX_RELATIVE_POSITIONS,
-					 RelativePosition.getAllRelativePositions(new RelativePosition(7, new Position(
-							 																2*Position.getShiftXAmount(),
-							 																Position.getShiftYAmount()))).length);
+	public void testGetAllRelativePositionsFromRelativePositionGreaterThanFour(){
+		RelativePosition relativePositionSeven = new RelativePosition(7, new Position(DefaultPosition.POSITION_SEVEN.getPosition()));
+		assertEquals(RelativePosition.MAX_RELATIVE_POSITIONS, RelativePosition.getAllRelativePositions(relativePositionSeven).length);
 		assertEquals(RelativePosition.getRelativePositionRightOf(RELATIVE_POSITION_ZERO),
-				 RelativePosition.getAllRelativePositions(RELATIVE_POSITION_ZERO)[1]);
+				 RelativePosition.getAllRelativePositions(relativePositionSeven)[1]);
 	}
 	
+	@Test
+	public void testGetAllRelativePositionsFromRelativePositionFour(){
+		RelativePosition relativePositionFour = new RelativePosition(4, new Position(DefaultPosition.POSITION_FOUR.getPosition()));
+		assertEquals(RelativePosition.MAX_RELATIVE_POSITIONS,
+					 RelativePosition.getAllRelativePositions(new RelativePosition(4, new Position(relativePositionFour))).length);
+		assertEquals(RELATIVE_POSITION_ZERO, RelativePosition.getAllRelativePositions(relativePositionFour)[0]);
+	}
+
+	@Test(expected = RelativePosition.PositionOutOfBoundsException.class)
+	public void whenIndexIsLessThan0_IndexOutOfBoundsThrown(){
+		RelativePosition.getAllRelativePositions(new RelativePosition(-1, new Position()));
+	}
+
+	@Test(expected = RelativePosition.PositionOutOfBoundsException.class)
+	public void whenIndexIsMoreThanMax_IndexOutOfBoundsThrown(){
+		RelativePosition.getAllRelativePositions(new RelativePosition(RelativePosition.MAX_RELATIVE_POSITIONS + 1, new Position()));
+	}
+
+	@Test
+	public void whenIndicesDoNotMatch_RelativePositionsAreNotEqual(){
+		assertNotEquals(new RelativePosition(1, new Position()),
+						new RelativePosition(2, new Position()));
+	}
+
+	@Test
+	public void whenXPositionsDoNotMatch_RelativePositionsAreNotEqual(){
+		assertNotEquals(new RelativePosition(1, new Position(1, 1)),
+				new RelativePosition(1, new Position(2, 1)));
+	}
+
+	@Test
+	public void whenYPositionsDoNotMatch_RelativePositionsAreNotEqual(){
+		assertNotEquals(new RelativePosition(1, new Position(1, 1)),
+				new RelativePosition(1, new Position(1, 2)));
+	}
+
+
 	//TODO figure out numCols to move
 //	private Position getPositionFromIndex(int index){
 //		return new Position

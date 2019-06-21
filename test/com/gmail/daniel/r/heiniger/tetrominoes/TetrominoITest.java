@@ -1,13 +1,9 @@
 package com.gmail.daniel.r.heiniger.tetrominoes;
 
-import static org.junit.Assert.*;
-
+import com.gmail.daniel.r.heiniger.tetrominoes.composites.DefaultPosition;
 import org.junit.Test;
 
-import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
-import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoI;
-import com.gmail.daniel.r.heiniger.tetrominoes.composites.Position;
-import com.gmail.daniel.r.heiniger.tetrominoes.composites.DefaultPosition;
+import static org.junit.Assert.assertEquals;
 
 public class TetrominoITest {
 	

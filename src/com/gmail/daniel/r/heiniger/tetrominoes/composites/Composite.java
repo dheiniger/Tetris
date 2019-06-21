@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JPanel;
 
-import com.gmail.daniel.r.heiniger.engine.Engine;
+import com.gmail.daniel.r.heiniger.engine.EngineProperties;
 
 public class Composite extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -15,8 +15,8 @@ public class Composite extends JPanel{
 	private static final int MAX_NUMBER_OF_X_COMPOSITES = 10;
 	private static final int MAX_NUMBER_OF_Y_COMPOSITES = 20;
 	
-	public static final int WIDTH = Engine.BOARD_WIDTH / MAX_NUMBER_OF_X_COMPOSITES;
-	public static final int HEIGHT = Engine.BOARD_HEIGHT / MAX_NUMBER_OF_Y_COMPOSITES;
+	public static final int WIDTH = EngineProperties.BOARD_WIDTH / MAX_NUMBER_OF_X_COMPOSITES;
+	public static final int HEIGHT = EngineProperties.BOARD_HEIGHT / MAX_NUMBER_OF_Y_COMPOSITES;
 	
 	private static final Color DEFAULT_BORDER_COLOR = Color.BLACK;
 	

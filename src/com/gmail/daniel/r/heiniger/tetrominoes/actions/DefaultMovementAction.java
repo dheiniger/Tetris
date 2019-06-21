@@ -13,4 +13,9 @@ public class DefaultMovementAction extends MovementAction{
 		System.out.println("An invalid key was pressed!");
 	}
 
+	@Override
+	public boolean equals(Object rhs){
+		return this.tetromino.equals(((DefaultMovementAction)rhs).tetromino);
+	}
+
 }

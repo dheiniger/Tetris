@@ -1,10 +1,14 @@
 package com.gmail.daniel.r.heiniger.tetrominoes;
 
 import java.awt.Graphics;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
 
 import com.gmail.daniel.r.heiniger.tetrominoes.composites.Composite;
+import com.gmail.daniel.r.heiniger.tetrominoes.composites.RelativePosition;
+
+import static java.util.Arrays.*;
 
 public abstract class Tetromino extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -25,35 +29,72 @@ public abstract class Tetromino extends JPanel{
 	}
 
 	public void shiftLeft(){
-		for (Composite composite : pieceComposites) {
-			composite.getRelativePosition().shiftLeft();
-		}
+		stream(pieceComposites).forEach(composite -> composite.getRelativePosition().shiftLeft());
 	}
 	
 	public void shiftRight(){
-		for (Composite composite : pieceComposites) {
-			composite.getRelativePosition().shiftRight();
-		}
+		stream(pieceComposites).forEach(composite -> composite.getRelativePosition().shiftRight());
 	}
 	
 	public void shiftUp(){
-		for (Composite composite : pieceComposites) {
-			composite.getRelativePosition().shiftUp();
-		}
+		stream(pieceComposites).forEach(composite -> composite.getRelativePosition().shiftUp());
 	}
 	
 	public void shiftDown(){
-		for (Composite composite : pieceComposites) {
-			composite.getRelativePosition().shiftDown();
-		}
+		stream(pieceComposites).forEach(composite -> composite.getRelativePosition().shiftDown());
 	}
 	
 	public void rotateRight(){
-		for (Composite composite : pieceComposites) {
-			composite.getRelativePosition().rotateRight();
-		}
+		//TODO violation of de-meter
+		stream(pieceComposites).forEach(composite -> composite.getRelativePosition().rotateRight());
+//		for (Composite composite : pieceComposites) {
+//			composite.getRelativePosition().rotateRight();
+//		}
+//		for (Composite composite : pieceComposites) {
+//			if(composite)
+//		}
 	}
 	
+	private void reorient(){
+////		while(isNotTopOriented()){
+//			
+//		}
+	}
+	
+//	private void orientTop(){
+//		while(isNotTopOriented()){
+//			for (Composite composite : pieceComposites) {
+////				RelativePosition.getRelativePositionAbove(relativePosition);
+//			}
+//		}
+//	}
+//
+//	private boolean isNotTopOriented(){
+//		return !isTopOriented();
+//	}
+//
+//	private boolean isNotLeftOriented(){
+//		return !isLeftOriented();
+//	}
+//
+//	private boolean isTopOriented(){
+//		for (Composite composite : pieceComposites) {
+//			if(composite.getRelativePosition().getIndex() < RelativePosition.ROW_WIDTH){
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//
+//	private boolean isLeftOriented(){
+//		for (Composite composite : pieceComposites) {
+//			if(composite.getRelativePosition().getIndex() % RelativePosition.ROW_HEIGHT == 0){
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//
 	public void rotateLeft(){
 	
 	}
@@ -61,9 +102,12 @@ public abstract class Tetromino extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
-		for (Composite composite : pieceComposites) {
-			composite.paintComponent(g);
-		}
-	}	
+
+		stream(pieceComposites).forEach(composite -> composite.paintComponent(g));
+	}
+
+	@Override
+	public boolean equals(Object rhs){
+		return rhs.getClass() == this.getClass();
+	}
 }

@@ -80,8 +80,6 @@ public class RelativePosition extends Position{
 		return relativePositions;
 	}
 	
-	
-	
 	private static RelativePosition[] getInitialPositions(RelativePosition relativePosition){
 		RelativePosition[] relativePositions = new RelativePosition[MAX_RELATIVE_POSITIONS];
 		relativePositions[0] = getRelativePositionZero(relativePosition);
@@ -102,14 +100,14 @@ public class RelativePosition extends Position{
 	
 	private static RelativePosition getRelativePositionZero(RelativePosition relativePosition){
 		if(relativePosition.index < 0 || relativePosition.index > MAX_RELATIVE_POSITIONS){
-			throw new IndexOutOfBoundsException();
+			throw new PositionOutOfBoundsException();
 		}
 		
 		if(relativePosition.index == 0){
 			return relativePosition;
 		}
 			
-		if(relativePosition.index <= ROW_WIDTH){
+		if(relativePosition.index < ROW_WIDTH){
 			return getRelativePositionZero(getRelativePositionLeftOf(relativePosition));
 		}
 		
@@ -137,15 +135,15 @@ public class RelativePosition extends Position{
 									getPositionRightOf(relativePosition));
 	}	
 
-	public RelativePosition rotateRight(){
+	public void rotateRight(){
 		//TODO if no collision
 		//TODO - fix this, it shouldn't matter if you call it repeatedly
 		RelativePosition rightRotatedRelativePosition = getRightRotatedRelativePosition();
 		index = rightRotatedRelativePosition.getIndex();
 		x = rightRotatedRelativePosition.getX();
 		y = rightRotatedRelativePosition.getY();
-		return this;
 	}
+
 	
 	@Override
 	public String toString(){
@@ -158,5 +156,8 @@ public class RelativePosition extends Position{
 		return index == comparedRelativePosition.getIndex() &&
 				getX() == (comparedRelativePosition.getX()) &&
 				getY() == comparedRelativePosition.getY();
+	}
+	public static class PositionOutOfBoundsException extends RuntimeException{
+
 	}
 }

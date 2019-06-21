@@ -10,7 +10,7 @@ public class RotateLeftMovementAction extends MovementAction{
 
 	@Override
 	public void move() {
-		System.out.println("Rotating Left -- Need to implement");
+		tetromino.rotateLeft();
 	}
 
 }

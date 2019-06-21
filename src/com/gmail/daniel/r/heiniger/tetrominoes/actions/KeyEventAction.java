@@ -9,6 +9,9 @@ import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
 public class KeyEventAction {
 	
 	public static MovementAction getMovementActionFromKeyCode(KeyEvent e, Tetromino tetromino){
+		if(e == null){
+			throw new InvalidKeyPressed();
+		}
 		if(getKeyCodeToActionMap(tetromino).get(e.getKeyCode()) == null){
 			return new DefaultMovementAction(tetromino);
 		}
@@ -22,10 +25,15 @@ public class KeyEventAction {
 		
 		keyEventMap.put(KeyEvent.VK_X, new RightMovementAction(tetromino));
 		keyEventMap.put(KeyEvent.VK_RIGHT, new RightMovementAction(tetromino));
+
 		keyEventMap.put(KeyEvent.VK_DOWN, new DownMovementAction(tetromino));
 		
 		keyEventMap.put(KeyEvent.VK_A, new RotateLeftMovementAction(tetromino));
 		keyEventMap.put(KeyEvent.VK_S, new RotateRightMovementAction(tetromino));
 		return keyEventMap;
+	}
+
+	protected static class InvalidKeyPressed extends RuntimeException{
+
 	}
 }

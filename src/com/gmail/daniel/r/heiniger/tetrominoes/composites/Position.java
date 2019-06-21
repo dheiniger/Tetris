@@ -1,6 +1,6 @@
 package com.gmail.daniel.r.heiniger.tetrominoes.composites;
 
-import com.gmail.daniel.r.heiniger.engine.Engine;
+import com.gmail.daniel.r.heiniger.engine.EngineProperties;
 /**
  * A {@link Position} represents the x and y coordinates of
  * 1 {@link Composite}. The {@code x - coordinate} of a {@link Position} is equal
@@ -31,13 +31,14 @@ public class Position {
 	}
 	
 	public static int getCenterXCoordinate(){
-		return Engine.BOARD_WIDTH/2 - BUFFER_SPACE;
+		return EngineProperties.BOARD_WIDTH/2 - BUFFER_SPACE;
 	}
 	
 	public static int getDrawingCenterXCoordinate(){
 		return getCenterXCoordinate() - getShiftXAmount();
 	}
 	
+	//TODO should these be static?
 	public static Position getPositionRightOf(Position p){
 		return new Position(p).shiftRight();
 	}
