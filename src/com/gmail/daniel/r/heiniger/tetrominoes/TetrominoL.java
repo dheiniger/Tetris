@@ -1,9 +1,9 @@
 package com.gmail.daniel.r.heiniger.tetrominoes;
 
-import java.awt.Color;
-
 import com.gmail.daniel.r.heiniger.tetrominoes.composites.Composite;
 import com.gmail.daniel.r.heiniger.tetrominoes.composites.DefaultPosition;
+
+import java.awt.*;
 
 public class TetrominoL extends Tetromino{
 	private static final long serialVersionUID = 1L;

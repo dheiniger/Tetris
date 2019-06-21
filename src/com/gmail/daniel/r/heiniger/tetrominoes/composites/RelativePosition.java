@@ -40,7 +40,7 @@ public class RelativePosition extends Position{
 	}
 	
 	private static Map<Integer, Integer> getIndexToRightRotatedIndex() {
-		Map<Integer, Integer> indexToRightRotatedIndex = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> indexToRightRotatedIndex = new HashMap<>();
 		indexToRightRotatedIndex.put(0, 3);
 		indexToRightRotatedIndex.put(1, 7);
 		indexToRightRotatedIndex.put(2, 11);

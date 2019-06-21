@@ -1,10 +1,10 @@
 package com.gmail.daniel.r.heiniger.events;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
 import com.gmail.daniel.r.heiniger.tetrominoes.actions.KeyEventAction;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class MovementListener implements KeyListener{
 	

@@ -21,7 +21,7 @@ public enum DefaultPosition {
 
 	private Position position;
 	
-	private DefaultPosition(Position relativePosition){
+	DefaultPosition(Position relativePosition){
 		this.position = relativePosition;
 	}
 	

@@ -1,18 +1,11 @@
 package com.gmail.daniel.r.heiniger.view;
 
-import java.awt.Color;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-
 import com.gmail.daniel.r.heiniger.engine.EngineProperties;
 import com.gmail.daniel.r.heiniger.events.MovementListener;
-import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
-import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoI;
-import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoO;
-import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoT;
-import com.gmail.daniel.r.heiniger.tetrominoes.TetrominoZ;
+import com.gmail.daniel.r.heiniger.tetrominoes.*;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Canvas extends JFrame{
 	

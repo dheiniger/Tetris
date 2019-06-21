@@ -1,10 +1,10 @@
 package com.gmail.daniel.r.heiniger.tetrominoes.actions;
 
+import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
+
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.gmail.daniel.r.heiniger.tetrominoes.Tetromino;
 
 public class KeyEventAction {
 	
@@ -19,7 +19,7 @@ public class KeyEventAction {
 	}
 	
 	private static Map<Integer, MovementAction> getKeyCodeToActionMap(Tetromino tetromino){
-		Map<Integer, MovementAction> keyEventMap = new HashMap<Integer, MovementAction>();
+		Map<Integer, MovementAction> keyEventMap = new HashMap<>();
 		keyEventMap.put(KeyEvent.VK_Z, new LeftMovementAction(tetromino));
 		keyEventMap.put(KeyEvent.VK_LEFT, new LeftMovementAction(tetromino));
 		

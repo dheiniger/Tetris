@@ -1,20 +1,17 @@
 package com.gmail.daniel.r.heiniger.tetrominoes;
 
-import java.awt.Graphics;
-import java.util.Arrays;
-
-import javax.swing.JPanel;
-
 import com.gmail.daniel.r.heiniger.tetrominoes.composites.Composite;
-import com.gmail.daniel.r.heiniger.tetrominoes.composites.RelativePosition;
 
-import static java.util.Arrays.*;
+import javax.swing.*;
+import java.awt.*;
+
+import static java.util.Arrays.stream;
 
 public abstract class Tetromino extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private static int NUMBER_OF_COMPOSITES = 4;
-	
-	protected Composite pieceComposites[];
+
+	protected Composite[] pieceComposites;
 	
 	public Tetromino(){
 		pieceComposites = new Composite[NUMBER_OF_COMPOSITES];
